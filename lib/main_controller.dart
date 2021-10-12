@@ -1,13 +1,30 @@
 import 'package:get/get.dart';
 
 class IncrementController extends GetxController {
-  int counter = 0;
+  var counterOne = 0.obs;
+  int counterTwo = 0;
 
-  void incrementCounter() {
-    counter++;
+  void incrementCounterOne() {
+    counterOne.value++;
+  }
 
+  void incrementCounterTwo() {
+    counterTwo++;
     update();
   }
+
+  void incrementBoth() {
+    incrementCounterOne();
+    incrementCounterTwo();
+  }
+
+  // int counter = 0;
+
+  // void incrementCounter() {
+  //   counter++;
+
+  //   update();
+  // }
 
   // @override
   // void onInit() {

@@ -39,6 +39,7 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(IncrementController());
+    //final controller = IncrementController();
 
     return Scaffold(
       appBar: AppBar(
@@ -66,35 +67,61 @@ class MyHomePage extends StatelessWidget {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            //AnotherWidget(),
             const Text(
               'You have pushed the button this many times:',
             ),
-            GetBuilder<IncrementController>(
-              //id: 'updatefirst',
+
+            MixinBuilder<IncrementController>(
               init: IncrementController(),
               builder: (value) {
                 return Text(
-                  '${value.counter}',
+                  '${value.counterOne.value} And ${value.counterTwo}',
                   style: Theme.of(context).textTheme.headline4,
                 );
               },
             ),
-            GetBuilder<IncrementController>(
-              //id: 'updatesecond',
-              init: IncrementController(),
-              builder: (value) {
-                return Text(
-                  '${value.counter}',
-                  style: Theme.of(context).textTheme.headline4,
-                );
-              },
-            )
+
+            // Obx(() => Text(
+            //       "${controller.counter.value}",
+            //       style: Theme.of(context).textTheme.headline4,
+            //     )),
+
+            // GetX<IncrementController>(
+            //   init: IncrementController(),
+            //   builder: (value) {
+            //     return Text(
+            //       '${value.counter.value}',
+            //       style: Theme.of(context).textTheme.headline4,
+            //     );
+            //   },
+            // )
+
+            // GetBuilder<IncrementController>(
+            //   //id: 'updatefirst',
+            //   init: IncrementController(),
+            //   builder: (value) {
+            //     return Text(
+            //       '${value.counter}',
+            //       style: Theme.of(context).textTheme.headline4,
+            //     );
+            //   },
+            // ),
+            // GetBuilder<IncrementController>(
+            //   //id: 'updatesecond',
+            //   builder: (value) {
+            //     return Text(
+            //       '${value.counter}',
+            //       style: Theme.of(context).textTheme.headline4,
+            //     );
+            //   },
+            // )
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          controller.incrementCounter();
+          controller.incrementBoth();
         },
         tooltip: 'Increment',
         child: const Icon(Icons.add),
@@ -102,3 +129,23 @@ class MyHomePage extends StatelessWidget {
     );
   }
 }
+
+// class AnotherWidget extends StatelessWidget {
+//   const AnotherWidget({Key? key}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     final IncrementController controller = Get.find();
+//     //final controller = IncrementController();
+
+//     return Container(
+//       alignment: Alignment.bottomCenter,
+//       height: 50,
+//       width: double.infinity,
+//       child: Obx(() => Text(
+//             '${controller.counter.value}',
+//             style: Theme.of(context).textTheme.headline4,
+//           )),
+//     );
+//   }
+// }
