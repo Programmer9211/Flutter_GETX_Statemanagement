@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_statemanagement/first_screen.dart';
+import 'package:getx_statemanagement/routes.dart';
 
 import 'main_controller.dart';
 
@@ -15,12 +17,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Flutter Demo',
+      getPages: Routes.routes,
+      initialRoute: '/home',
 
       // Configuration.
 
       smartManagement: SmartManagement.full,
-      //smartManagement: SmartManagement.keepFactory,
-      //smartManagement: SmartManagement.onlyBuilder,
+      // smartManagement: SmartManagement.keepFactory,
+      // smartManagement: SmartManagement.onlyBuilder,
 
       theme: ThemeData(
         // This is the theme of your application.
@@ -34,7 +38,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Home Screen'),
     );
   }
 }
@@ -74,20 +78,59 @@ class MyHomePage extends StatelessWidget {
           // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            //AnotherWidget(),
-            const Text(
-              'You have pushed the button this many times:',
+            ElevatedButton(
+              onPressed: () {
+                Get.to(() => FirstScreen());
+              },
+              child: const Text("First Screen"),
             ),
 
-            MixinBuilder<IncrementController>(
-              init: IncrementController(),
-              builder: (value) {
-                return Text(
-                  '${value.counterOne.value} And ${value.counterTwo}',
-                  style: Theme.of(context).textTheme.headline4,
-                );
+            ElevatedButton(
+              onPressed: () {
+                Get.toNamed('/first');
               },
+              child: const Text("First Screen(Named Route)"),
             ),
+
+            ElevatedButton(
+              onPressed: () {
+                //Get.to(() => FirstScreen(), arguments: "Some Data");
+                Get.to(() => FirstScreen(),
+                    arguments: ['some String data', 12, true]);
+              },
+              child: const Text("First Screen(With Data)"),
+            ),
+
+            ElevatedButton(
+              onPressed: () {
+                // Remove Previous Route.
+                Get.off(() => FirstScreen());
+              },
+              child: const Text("First Screen(Removing previous route)"),
+            ),
+
+            ElevatedButton(
+              onPressed: () {
+                // Remove All Route.
+                Get.offAll(() => FirstScreen());
+              },
+              child: const Text("First Screen(Removing All route)"),
+            ),
+
+            //AnotherWidget(),
+            // const Text(
+            //   'You have pushed the button this many times:',
+            // ),
+
+            // MixinBuilder<IncrementController>(
+            //   init: IncrementController(),
+            //   builder: (value) {
+            //     return Text(
+            //       '${value.counterOne.value} And ${value.counterTwo}',
+            //       style: Theme.of(context).textTheme.headline4,
+            //     );
+            //   },
+            // ),
 
             // Obx(() => Text(
             //       "${controller.counter.value}",
@@ -126,13 +169,13 @@ class MyHomePage extends StatelessWidget {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          controller.incrementBoth();
-        },
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     controller.incrementBoth();
+      //   },
+      //   tooltip: 'Increment',
+      //   child: const Icon(Icons.add),
+      // ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

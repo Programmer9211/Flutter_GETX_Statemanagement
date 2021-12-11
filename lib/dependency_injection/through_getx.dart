@@ -22,8 +22,8 @@ class OtherScreen extends StatelessWidget {
   OtherScreen({Key? key}) : super(key: key);
 
   final Controller controller = Get.find();
-  // final Controller controller = Get.find(tag: "Tag1");
-  // final Controller controller = Get.find(tag: "Tag2");
+  // final Controller controller1 = Get.find(tag: "Tag1");
+  // final Controller controller2 = Get.find(tag: "Tag2");
 
   @override
   Widget build(BuildContext context) {

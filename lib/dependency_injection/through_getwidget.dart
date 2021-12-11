@@ -12,9 +12,8 @@ class HomePageBindings implements Bindings {
   }
 }
 
-class HomePage extends GetView<Controller> {
+class HomePage extends GetWidget<Controller> {
   // Define Controller type
-
   const HomePage({Key? key}) : super(key: key);
 
   @override

@@ -20,38 +20,38 @@ class HomeScreenBindigs implements Bindings {
 
     // Get.put With Tag
 
-    // Get.put(Controller(), tag: "tag");
-    // Get.put(AnotherController(), tag: "tag");
+    Get.put(Controller(), tag: "tag");
+    Get.put(AnotherController(), tag: "tag");
 
     // Get.put with permanent property.
 
-    // Get.put(Controller(), permanent: true);
-    // Get.put(AnotherController(), permanent: true);
+    Get.put(Controller(), permanent: true);
+    Get.put(AnotherController(), permanent: true);
 
     // Get.lazyPut
 
-    // Get.lazyPut(() => Controller());
-    // Get.lazyPut(() => const AnotherClass());
+    Get.lazyPut(() => Controller());
+    Get.lazyPut(() => const AnotherClass());
 
     // Get.lazyPut With Tag
 
-    // Get.lazyPut(() => Controller(), tag: "tag");
-    // Get.lazyPut(() => const AnotherClass(), tag: "tag");
+    Get.lazyPut(() => Controller(), tag: "tag");
+    Get.lazyPut(() => const AnotherClass(), tag: "tag");
 
     // Get.lazyPut with fenix(permanent) property.
 
-    // Get.lazyPut(() => Controller(), fenix: true);
-    // Get.lazyPut(() => const AnotherClass(), fenix: true);
+    Get.lazyPut(() => Controller(), fenix: true);
+    Get.lazyPut(() => const AnotherClass(), fenix: true);
 
     // Get.create
 
-    // Get.create(() => Controller());
-    // Get.create(() => AnotherController());
+    Get.create(() => Controller());
+    Get.create(() => AnotherController());
 
     // Get.create With Tag
 
-    // Get.create(() => Controller(), tag: "tag");
-    // Get.create(() => AnotherController(), tag: "tag");
+    Get.create(() => Controller(), tag: "tag");
+    Get.create(() => AnotherController(), tag: "tag");
 
     // Get.create with permanent property.
 
